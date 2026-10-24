@@ -425,3 +425,28 @@ To eliminate disk thrashing and achieve sub-minute training:
 - **True Positives (~69,567 pairs):** Extracted via DuckDB joins between sampled S1 entities and `train_ground_truth.tsv`.
 - **Hard Negatives (~67,430 pairs):** Extracted by joining S1 entities with S2/S3 records that share the same country and a common token but are verified non-matches.
 - **Dataset Size:** 136,997 balanced, high-discrimination candidate pairs processed in under **6.3 seconds**.
+
+### Model Architecture & Feature Importance Hierarchy
+
+The model was configured with:
+- `n_estimators = 150`
+- `max_depth = 6`
+- `learning_rate = 0.10`
+- `subsample = 0.8`
+- `colsample_bytree = 0.8`
+- `n_jobs = 8`
+
+Training completed in **1.03 seconds** on 110,729 training pairs.
+
+#### Feature Importance Hierarchy
+
+| Rank | Feature | Importance Weight | Description |
+| :---: | :--- | :---: | :--- |
+| **1** | `addr_token_jaccard` | **0.5665** | Word-level address Jaccard similarity |
+| **2** | `addr_token_overlap_count` | **0.2552** | Count of shared address tokens |
+| **3** | `token_jaccard` | **0.0414** | Name token unigram Jaccard |
+| **4** | `addr_has_shared_num` | **0.0349** | Identical house number / PIN code flag |
+| **5** | `token_containment` | **0.0300** | Name subset containment |
+| **6** | `char3_jaccard` | **0.0211** | Character 3-gram similarity |
+| **7** | `name_addr_interaction` | **0.0185** | Multiplicative name $	imes$ address signal |
+| **8** | `exact_no_suf` | **0.0152** | Exact suffix-stripped name match |
