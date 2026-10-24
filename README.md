@@ -467,3 +467,17 @@ To maximize the official competition metric, we swept probability thresholds $	a
 | 0.85 | 0.9985 | 0.9907 | 0.9963 |
 
 > **Optimal Calibration:** $	au = 0.75$ achieves **$	ext{Macro } F_{0.5} = \mathbf{0.9964}$** on scored candidate pairs, maximizing precision while reliably preserving singletons.
+
+## Phase 6: Submission Verification & Quality Assurance
+
+Both output files (`matching_results.tsv` and `candidate_pairs.tsv`) were validated against the official submission validator (`validate_submission.py`):
+
+```
+ML Challenge 2026 — submission validator
+  test dir: dataset/test
+  required S1 entities: 1,732,544
+  matching_results.tsv: 1,732,544 rows (745,557 singletons, 986,987 matches)
+  candidate_pairs.tsv: 1,732,544 rows (744,396 empty, 988,148 non-empty)
+
+PASS — no blocking issues found. Safe to submit.
+```
