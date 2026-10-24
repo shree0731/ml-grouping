@@ -231,3 +231,10 @@ In the Indian partition, Source 1 business names are strictly rendered in the La
 - **Telugu Observation:** `బిగ్ రియల్ ఇంటర్నేషనల్ లిమిటెడ్`
 
 *Impact:* Character-level Jaccard or Levenshtein distance on raw text produces 0.0 similarity. However, their numeric street addresses and PIN codes remain tightly aligned.
+
+### 2. OCR and Leet-Speak Typographical Corruptions
+Digit-for-letter and visually ambiguous substitutions frequently corrupt initial characters:
+- `Bhubaneswar Cement Limited` $\leftrightarrow$ `8hubaneswar Cement` (`B` $ightarrow$ `8`)
+- `Olanelle Pinnacle` $\leftrightarrow$ `0LANELLE PINNACLE` (`O` $ightarrow$ `0`)
+- `Ironclad LLC` $\leftrightarrow$ `lRONCLAD LLC` (Capital `I` $ightarrow$ lowercase `l`)
+- `Medina and Thompson LLC` $\leftrightarrow$ `Medina and Tmthonm LLC` (Internal letter scrambling)
