@@ -101,3 +101,16 @@ e \emptyset$) drops the score immediately to: $F_{0.5}(e_i^{(1)}) = 0.0$.
 ## Exploratory Data Analysis & Scale Analysis
 
 To analyze the 26.4 million tabular records without memory exhaustion, we leveraged DuckDB as an in-process vectorized SQL OLAP engine. This enabled rapid, zero-copy querying directly over tab-separated raw storage with multi-threaded streaming across 12 CPU cores.
+
+### Global File Inventory & Scale
+
+| Split | File Name | Role | Raw Size | Total Rows | Unique IDs | Duplicate IDs |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: |
+| **Train** | `train_source1.tsv` | Deduplicated Reference | 200.3 MB | 2,206,821 | 2,206,821 | 0 |
+| **Train** | `train_source2.tsv` | Query Stream A | 466.6 MB | 5,034,616 | 5,034,616 | 0 |
+| **Train** | `train_source3.tsv` | Query Stream B | 480.4 MB | 5,285,603 | 5,285,603 | 0 |
+| **Train** | `train_ground_truth.tsv` | Match Labels | 121.1 MB | 2,206,821 | 2,206,821 | 0 |
+| **Test** | `test_source1.tsv` | Test Reference | 166.9 MB | 1,732,544 | 1,732,544 | 0 |
+| **Test** | `test_source2.tsv` | Test Query Stream A | 485.9 MB | 4,887,273 | 4,887,273 | 0 |
+| **Test** | `test_source3.tsv` | Test Query Stream B | 482.6 MB | 5,082,316 | 5,082,316 | 0 |
+| **Total** | **All 7 TSV Tables** | **Complete Dataset** | **~2.40 GB** | **26,436,000** | **26,436,000** | **0** |
