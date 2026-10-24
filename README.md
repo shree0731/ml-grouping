@@ -388,3 +388,14 @@ A detailed empirical audit of missed matches identified four primary root causes
 ## Phase 3: Pairwise Feature Engineering
 
 For each candidate pair $(e^{(1)}, e^{(	ext{cand})})$, we extract 15 similarity features measuring lexical, structural, and address alignment.
+
+### Lexical & Token Set Features
+
+1. `exact_norm_name`: Binary indicator of identical normalized names.
+2. `exact_no_suf`: Binary indicator of identical suffix-stripped names.
+3. `exact_compact`: Binary indicator of identical compact alphanumeric names.
+4. `token_jaccard`: Jaccard similarity across name unigrams:
+   $$	ext{Jaccard}(T_1, T_2) = rac{|T_1 \cap T_2|}{|T_1 \cup T_2|}$$
+5. `token_containment`: Ratio of shared tokens to minimum token count:
+   $$	ext{Containment}(T_1, T_2) = rac{|T_1 \cap T_2|}{\min(|T_1|, |T_2|)}$$
+6. `token_overlap_count`: Integer count of shared name words.
