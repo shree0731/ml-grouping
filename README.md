@@ -338,3 +338,9 @@ By partitioning entities strictly by `country`, the search space immediately div
 
 ### 5. Selective Compact Prefix Block
 - **Block 5 (Selective Prefix):** Extracts the first 5 characters of the compact name, active only when the prefix bucket size is $\le 150$. Catches compound names with differing suffix words.
+
+### Union Candidate Deduplication
+
+For each Source 1 query entity, the multi-index blocker queries all 5 index structures and returns the deduplicated union of matching IDs:
+$$\mathcal{C}(e^{(1)}) = igcup_{k=1}^5 	ext{Index}_k(e^{(1)})$$
+Every candidate pair records $(e_{	ext{id}}^{(1)}, e_{	ext{id}}^{(	ext{cand})}, 	ext{source})$.
