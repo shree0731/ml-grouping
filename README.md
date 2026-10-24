@@ -311,3 +311,10 @@ Country labels are normalized via whitespace trimming and case stabilization wit
 | `रेड वेंचर्स प्राइवेट लिमिटेड` | `G-1, BANIPARK, JAIPUR, Rajasthan` | `रेड वेंचर्स प्राइवेट लिमिटेड` | `रेड वेंचर्स` | `रेडवेंचर्स` | `g 1 banipark jaipur rajasthan` |
 | `ராஜ் இன்வெஸ்ட்மெண்ட்ஸ் எல்எல்பி` | `6(29), C.I.T. Colony, Chennai, TN` | `ராஜ் இன்வெஸ்ட்மெண்ட்ஸ் எல்எல்பி` | `ராஜ் இன்வெஸ்ட்மெண்ட்ஸ்` | `ராஜ்இன்வெஸ்ட்மெண்ட்ஸ்` | `6 29 c i t colony chennai tn` |
 | `Dupont & Fils SASU` | `175 Boulevard du Président Franklin Roosevelt` | `dupont and fils sasu` | `dupont and fils` | `dupontandfils` | `175 boulevard du président franklin roosevelt` |
+
+## Phase 2: Multi-Index Candidate Generation (Blocking)
+
+All-pairs cross-source comparison across 12.5M training records requires:
+$$N_{	ext{pairs}} = N_1 	imes (N_2 + N_3) = 2,206,821 	imes (5,034,616 + 5,285,603) pprox \mathbf{22.77 	ext{ trillion pairs}}$$
+
+To make candidate generation tractable, we implemented a **multi-strategy inverted blocking engine** (`MultiIndexBlocker`) that constructs multiple complementary hash indexes per country partition.
