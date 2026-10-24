@@ -97,3 +97,7 @@ where $\mathcal{T}_i$ is the ground-truth set of matching IDs, and $\mathcal{P}_
      - Predicting even a single false match ($\mathcal{P}_i 
 e \emptyset$) drops the score immediately to: $F_{0.5}(e_i^{(1)}) = 0.0$.
    - Consequently, precision calibration and aggressive thresholding directly protect the substantial singleton score contribution.
+
+## Exploratory Data Analysis & Scale Analysis
+
+To analyze the 26.4 million tabular records without memory exhaustion, we leveraged DuckDB as an in-process vectorized SQL OLAP engine. This enabled rapid, zero-copy querying directly over tab-separated raw storage with multi-threaded streaming across 12 CPU cores.
