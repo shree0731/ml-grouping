@@ -450,3 +450,20 @@ Training completed in **1.03 seconds** on 110,729 training pairs.
 | **6** | `char3_jaccard` | **0.0211** | Character 3-gram similarity |
 | **7** | `name_addr_interaction` | **0.0185** | Multiplicative name $	imes$ address signal |
 | **8** | `exact_no_suf` | **0.0152** | Exact suffix-stripped name match |
+
+## Phase 5: Threshold Calibration & Singleton Optimization
+
+To maximize the official competition metric, we swept probability thresholds $	au \in [0.30, 0.85]$ on 3,798 held-out validation Source 1 entities:
+
+| Decision Threshold $	au$ | Precision | Recall | Macro $F_{0.5}$ |
+| :---: | :---: | :---: | :---: |
+| 0.30 | 0.9956 | 0.9948 | 0.9950 |
+| 0.40 | 0.9959 | 0.9945 | 0.9952 |
+| 0.50 | 0.9965 | 0.9939 | 0.9956 |
+| 0.60 | 0.9969 | 0.9928 | 0.9957 |
+| 0.70 | 0.9978 | 0.9926 | 0.9963 |
+| **0.75 (Optimal)** | **0.9981** | **0.9924** | **0.9964** |
+| 0.80 | 0.9984 | 0.9914 | 0.9964 |
+| 0.85 | 0.9985 | 0.9907 | 0.9963 |
+
+> **Optimal Calibration:** $	au = 0.75$ achieves **$	ext{Macro } F_{0.5} = \mathbf{0.9964}$** on scored candidate pairs, maximizing precision while reliably preserving singletons.
