@@ -198,3 +198,13 @@ Analyzing the distribution of matches per Source 1 reference entity in `train_gr
 - **Mean Matches per S1:** $3.4613$
 - **Median Matches per S1:** $3.0$
 - **Maximum Matches observed:** $11$
+
+### The 1-to-1 Reverse Exclusivity Guarantee
+
+A crucial graph topology discovery emerged from checking link multiplicity in reverse:
+
+$$	ext{Total Links in Ground Truth} = 7,638,365$$
+$$	ext{Unique Matched Candidate IDs} = 7,638,365$$
+$$	ext{Collisions / Multi-Parent Entities} = 0$$
+
+> **Topology Invariant:** Every Source 2 and Source 3 entity in ground truth belongs to **at most one** Source 1 reference entity. There are zero multi-parent conflicts. This establishes that cross-source matching operates as an exclusive partition of query records to reference entities.
