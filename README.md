@@ -328,3 +328,6 @@ By partitioning entities strictly by `country`, the search space immediately div
 ### 2. Exact Name and Suffix-Stripped Blocks
 - **Block 1 (`norm_name`):** Inverted index over full normalized name strings.
 - **Block 2 (`norm_name_no_suffix`):** Inverted index over names after stripping legal suffixes, directly linking entities that diverge only in corporate designation (`Acme LLC` $\leftrightarrow$ `Acme Inc`).
+
+### 3. Compact Web-Clean and Handle-Stripped Block
+- **Block 3 (`norm_name_compact`):** Strips spaces, TLDs (`.com`, `.org`, `.in`), and handle prefixes (`@`). Links entities transformed into URLs or single-token brands (`Dent Coffee` $\leftrightarrow$ `@dentcoffee`).
