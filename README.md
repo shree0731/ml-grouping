@@ -254,3 +254,10 @@ Business records frequently drift between abbreviated, full, and alternate legal
 - `Red Ventures Private Limited` $\leftrightarrow$ `Red Ventures Pvt Ltd` $\leftrightarrow$ `Red Ventures`
 - `Dupont & Fils SASU` $\leftrightarrow$ `Dupont & Fils SARL` $\leftrightarrow$ `Dupont & Fils`
 - Inverted structures: `LLC UROLOGY ROCKY ASSOCIATES` vs `Urology Rocky Associates LLC`.
+
+### 5. Web Domain and Social Handle Transformations
+Entity names are frequently reformatted as domain URLs or social handles:
+- `Malappuram Tradecomm` $\leftrightarrow$ `malappuramtradecomm.com`
+- `The Dent Coffee` $\leftrightarrow$ `@DENTCOFFEE`
+- `Kaveravi Software Corporation` $\leftrightarrow$ `kaveravisoftware.com`
+- `Kasey & Heredia Tailwind` $\leftrightarrow$ `KASEYHEREDIATAILWIND.COM`
