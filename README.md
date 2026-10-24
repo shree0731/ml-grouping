@@ -208,3 +208,11 @@ $$	ext{Unique Matched Candidate IDs} = 7,638,365$$
 $$	ext{Collisions / Multi-Parent Entities} = 0$$
 
 > **Topology Invariant:** Every Source 2 and Source 3 entity in ground truth belongs to **at most one** Source 1 reference entity. There are zero multi-parent conflicts. This establishes that cross-source matching operates as an exclusive partition of query records to reference entities.
+
+### Regional Singleton Invariance
+
+The proportion of singletons (entities with 0 matches across S2 and S3) proved remarkably consistent across geographies:
+- **United States:** $73,896$ singletons out of $1,323,633$ S1 entities (**$5.583\%$**)
+- **India:** $49,351$ singletons out of $883,188$ S1 entities (**$5.588\%$**)
+
+This structural invariant allows calibrated validation and baseline priors for test-set singleton estimation.
