@@ -1,0 +1,30 @@
+# Datasets & Archives
+*.tsv
+*.csv
+*.zip
+*.tar.gz
+*.duckdb
+*.parquet
+6ab10eb3b23ba_student_resource/
+6ab10eb3b23ba_student_resource.zip
+__MACOSX/
+.DS_Store
+
+# Output & Artifacts
+output/
+reports/
+models/
+*.json
+
+# Source code & Scripts (Documentation-only repository)
+src/
+scripts/
+tests/
+__pycache__/
+*.pyc
+
+# Virtual Environment & OS
+.venv/
+venv/
+ENV/
+Thumbs.db
