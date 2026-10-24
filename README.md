@@ -399,3 +399,10 @@ For each candidate pair $(e^{(1)}, e^{(	ext{cand})})$, we extract 15 similarity 
 5. `token_containment`: Ratio of shared tokens to minimum token count:
    $$	ext{Containment}(T_1, T_2) = rac{|T_1 \cap T_2|}{\min(|T_1|, |T_2|)}$$
 6. `token_overlap_count`: Integer count of shared name words.
+
+### Character N-Gram & Structural Features
+
+7. `char3_jaccard`: Jaccard similarity across character 3-grams of compact names (robust to internal transpositions and misspellings).
+8. `char_prefix_match_ratio`: Ratio of shared common prefix length to maximum string length.
+9. `name_len_diff`: Absolute difference in character lengths: $|L_1 - L_2|$.
+10. `name_len_ratio`: Ratio of shorter to longer name: $\min(L_1, L_2) / \max(L_1, L_2)$.
