@@ -335,3 +335,6 @@ By partitioning entities strictly by `country`, the search space immediately div
 ### 4. Informative Token Inverted Indexing
 - **Block 4 (Informative Tokens):** Extracts word tokens of length $\ge 3$ characters from the suffix-stripped name.
 - **Frequency Safety Cap:** Evaluates token document frequencies in target sources (S2/S3) and prunes any token appearing more than $250$ times. This prevents catastrophic Cartesian blowups on generic words ("solutions", "services", "care").
+
+### 5. Selective Compact Prefix Block
+- **Block 5 (Selective Prefix):** Extracts the first 5 characters of the compact name, active only when the prefix bucket size is $\le 150$. Catches compound names with differing suffix words.
