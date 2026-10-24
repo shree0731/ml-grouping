@@ -354,3 +354,15 @@ Across the full training set:
 $$	ext{Reduction Ratio} = 1 - rac{249,345,756}{11,839,670,856,657} = \mathbf{99.997894\%}$$
 
 Over 99.9978% of all potential pairs are eliminated before ML scoring.
+
+### Full-Dataset Candidate Quality Results
+
+| Metric | Source 2 (`S2`) | Source 3 (`S3`) | Combined (`S2 + S3`) |
+| :--- | :---: | :---: | :---: |
+| **Possible Pairs (Country-Blocked)** | 5,775,254,399,373 | 6,064,416,457,284 | **11,839,670,856,657** |
+| **Total Candidates Generated** | 123,389,742 | 125,956,014 | **249,345,756** |
+| **Reduction Ratio** | **99.997863%** | **99.997923%** | **99.997894%** |
+| **True Positives in Candidates** | **2,284,419** | **2,408,706** | **4,693,125** |
+| **Total True Matches** | 3,693,619 | 3,944,746 | **7,638,365** |
+| **Candidate Recall Ceiling** | **61.8477%** | **61.0611%** | **61.4415%** |
+| **S1 Entities with 0 Candidates** | 197,073 (8.93%) | 195,812 (8.87%) | **87,631 (3.97%)** |
