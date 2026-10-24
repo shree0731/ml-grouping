@@ -324,3 +324,7 @@ By partitioning entities strictly by `country`, the search space immediately div
 - US: $1.32	ext{M} 	imes (3.02	ext{M} + 3.17	ext{M}) pprox 8.19	ext{ trillion pairs}$
 - India: $0.88	ext{M} 	imes (2.02	ext{M} + 2.12	ext{M}) pprox 3.65	ext{ trillion pairs}$
 - Total Country-Blocked Space: **$11.84	ext{ trillion pairs}$** (50% reduction instantly with 100% recall).
+
+### 2. Exact Name and Suffix-Stripped Blocks
+- **Block 1 (`norm_name`):** Inverted index over full normalized name strings.
+- **Block 2 (`norm_name_no_suffix`):** Inverted index over names after stripping legal suffixes, directly linking entities that diverge only in corporate designation (`Acme LLC` $\leftrightarrow$ `Acme Inc`).
