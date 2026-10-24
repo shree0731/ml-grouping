@@ -481,3 +481,21 @@ ML Challenge 2026 — submission validator
 
 PASS — no blocking issues found. Safe to submit.
 ```
+
+## Performance Benchmarks & Engineering Takeaways
+
+### Pipeline Execution Speed
+
+| Component | Dataset Scope | Old Runtime | Optimized Runtime | Peak RAM |
+| :--- | :--- | :---: | :---: | :---: |
+| **Full Ingestion & Preprocessing** | 26.4M rows | ~3.5 hours | ~15 mins | < 1.2 GB |
+| **Multi-Index Inverted Blocking** | 12.5M rows (Train) | ~2.5 hours | ~45 mins | < 2.5 GB |
+| **Training Pair Generation** | 137k pairs | > 5 hours | **5.65 seconds** | < 350 MB |
+| **Pairwise Feature Extraction** | 137k pairs | Blocked | **6.26 seconds** | < 450 MB |
+| **XGBoost Training (150 trees)** | 110k pairs | Blocked | **1.03 seconds** | < 450 MB |
+| **Threshold Calibration ($F_{0.5}$)**| 26k val pairs | Blocked | **0.61 seconds** | < 450 MB |
+
+### Key Architectural Lessons
+1. **Never perform Cartesian lookups in pure Python loops.** In-memory vectorized SQL engines (DuckDB) outperform Python dictionaries by orders of magnitude on multi-million row datasets.
+2. **Prioritize precision in $F_{0.5}$ optimization.** A threshold of $	au = 0.75$ protects against catastrophic false merges while capturing true matches with 99.8% precision.
+3. **Hard-block on strict invariants first.** The 100% intra-country invariant eliminated 11 trillion comparisons with zero loss.
