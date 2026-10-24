@@ -261,3 +261,12 @@ Entity names are frequently reformatted as domain URLs or social handles:
 - `The Dent Coffee` $\leftrightarrow$ `@DENTCOFFEE`
 - `Kaveravi Software Corporation` $\leftrightarrow$ `kaveravisoftware.com`
 - `Kasey & Heredia Tailwind` $\leftrightarrow$ `KASEYHEREDIATAILWIND.COM`
+
+## Multi-Stage Processing Pipeline
+
+To handle 26.4 million rows under strict memory bounds (< 4 GB RAM) and fast iteration times, we structured the solution into five decoupled pipeline stages:
+1. **Normalization & Canonicalization**
+2. **Multi-Strategy Inverted Blocking (Candidate Generation)**
+3. **Pairwise Feature Engineering**
+4. **Machine Learning Matching Model (GBDT)**
+5. **Threshold Calibration & Submission Verification**
