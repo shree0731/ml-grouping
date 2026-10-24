@@ -166,3 +166,16 @@ The emergence of `France` in the test set (comprising ~15% of records) represent
 2. Handling French legal suffixes (`SARL`, `SAS`, `SASU`, `EURL`, `& Fils`).
 3. Preserving Latin accented characters (`é`, `è`, `ê`, `à`, `ç`, `ô`, `ù`) via Unicode NFKC normalization.
 4. Expanding European address tokens (`Boulevard`, `Rue`, `Avenue`, `bis`).
+
+### Text Statistics Profile
+
+| Field | Source Table | Min Chars | Max Chars | Mean Chars | Median Chars | Mean Words |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| `business_name` | `train_source1` | 3 | 105 | 24.03 | 24.0 | 3.55 |
+| `business_name` | `train_source2` | 2 | 104 | 25.10 | 25.0 | 3.61 |
+| `business_name` | `train_source3` | 2 | 123 | 25.20 | 25.0 | 3.63 |
+| `business_address` | `train_source1` | 11 | 256 | 52.07 | 41.0 | 8.03 |
+| `business_address` | `train_source2` | 8 | 249 | 47.83 | 37.0 | 7.56 |
+| `business_address` | `train_source3` | 2 | 240 | 48.32 | 42.0 | 7.42 |
+| `business_name` | `test_source1` | 3 | 92 | 23.84 | 24.0 | 3.52 |
+| `business_address` | `test_source1` | 11 | 268 | 57.21 | 50.0 | 8.59 |
