@@ -344,3 +344,13 @@ By partitioning entities strictly by `country`, the search space immediately div
 For each Source 1 query entity, the multi-index blocker queries all 5 index structures and returns the deduplicated union of matching IDs:
 $$\mathcal{C}(e^{(1)}) = igcup_{k=1}^5 	ext{Index}_k(e^{(1)})$$
 Every candidate pair records $(e_{	ext{id}}^{(1)}, e_{	ext{id}}^{(	ext{cand})}, 	ext{source})$.
+
+### Reduction Ratio Analysis
+
+The candidate reduction ratio measures the percentage of candidate pairs eliminated:
+$$	ext{Reduction Ratio} = 1 - rac{|\mathcal{C}_{	ext{generated}}|}{|\mathcal{C}_{	ext{all-pairs country}}|}$$
+
+Across the full training set:
+$$	ext{Reduction Ratio} = 1 - rac{249,345,756}{11,839,670,856,657} = \mathbf{99.997894\%}$$
+
+Over 99.9978% of all potential pairs are eliminated before ML scoring.
