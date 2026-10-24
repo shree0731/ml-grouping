@@ -384,3 +384,7 @@ A detailed empirical audit of missed matches identified four primary root causes
 2. **Leet-Speak & Initial Digit Corruptions (~22% of misses):** Leading character substitutions (`8` for `B`, `0` for `O`, `l` for `I`).
 3. **Generic Term Frequency Caps (~18% of misses):** Entities consisting solely of frequent terms pruned by the safety threshold.
 4. **Inverted Suffix Structures (~12% of misses):** Leading legal suffixes (`LLC UROLOGY ...`).
+
+## Phase 3: Pairwise Feature Engineering
+
+For each candidate pair $(e^{(1)}, e^{(	ext{cand})})$, we extract 15 similarity features measuring lexical, structural, and address alignment.
