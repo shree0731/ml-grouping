@@ -290,3 +290,9 @@ We constructed a whitespace-bounded multilingual regex supporting English, Frenc
 - Indic: `प्राइवेट लिमिटेड`, `लिमिटेड`, `எல்எல்பி`, `ప్రైవేట్ లిమిటెడ్`, `லிమిటెడ్`
 
 Using `(?:^|\s+)` boundaries ensures seamless matching across non-ASCII scripts where regex `` fails on combining characters.
+
+### Address Normalization & Numeric Token Preservation
+
+1. **Abbreviation Expansion:** Standardizes common street abbreviations (`st` / `saint` $ightarrow$ `street`, `rd` $ightarrow$ `road`, `ave` $ightarrow$ `avenue`, `blvd` $ightarrow$ `boulevard`, `ste` $ightarrow$ `suite`, `apt` $ightarrow$ `apartment`).
+2. **Numeric Preservation:** Extracts house numbers, suite digits, and postal PIN codes as dedicated sets.
+3. **Artifact Stripping:** Purges synthetic placeholder tokens (`null`, `none`, `<null>`).
