@@ -123,3 +123,15 @@ To analyze the 26.4 million tabular records without memory exhaustion, we levera
   - Source 3: `S3-`
 - **Split Isolation:** Strict zero-overlap verified between train and test entity IDs:
   $$\mathcal{S}_1^{	ext{train}} \cap \mathcal{S}_1^{	ext{test}} = \emptyset, \quad \mathcal{S}_2^{	ext{train}} \cap \mathcal{S}_2^{	ext{test}} = \emptyset, \quad \mathcal{S}_3^{	ext{train}} \cap \mathcal{S}_3^{	ext{test}} = \emptyset$$
+
+### Missingness Profile
+
+- `entity_id`: 0 missing values across all 26.4M records (100% complete).
+- `business_name`: 0 missing values across all 26.4M records (100% complete).
+- `country`: 0 missing values across all 26.4M records (100% complete).
+- `business_address`:
+  - Source 1: 0% missing in both train and test.
+  - Source 2: 3.36% missing in train (168,967 rows), 2.65% in test (129,408 rows).
+  - Source 3: 3.33% missing in train (175,916 rows), 2.68% in test (136,098 rows).
+
+*Implication:* Matching models cannot rely solely on address features; models must maintain robust matching capabilities when address tokens are completely absent.
