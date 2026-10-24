@@ -55,3 +55,12 @@ flowchart TD
         XGB --> THRESH --> OUT1 & OUT2
     end
 ```
+
+## Problem Formulation
+
+Let $\mathcal{S}_1 = \{e_1^{(1)}, e_2^{(1)}, \dots, e_{N_1}^{(1)}\}$ denote the deduplicated reference entity catalog from Source 1.
+Let $\mathcal{S}_2 = \{e_1^{(2)}, \dots, e_{N_2}^{(2)}\}$ and $\mathcal{S}_3 = \{e_1^{(3)}, \dots, e_{N_3}^{(3)}\}$ denote noisy entity observation streams from Source 2 and Source 3 respectively.
+
+Each record $e = (	ext{id}, 	ext{name}, 	ext{address}, 	ext{country})$ describes a business entity. There are no shared synthetic or natural primary keys across sources. The entity resolution objective is to learn a mapping:
+$$\mathcal{M}: \mathcal{S}_1 ightarrow \mathcal{P}(\mathcal{S}_2 \cup \mathcal{S}_3)$$
+that associates each reference entity $e_i^{(1)} \in \mathcal{S}_1$ with all matching records from $\mathcal{S}_2$ and $\mathcal{S}_3$ that denote the same physical real-world enterprise.
