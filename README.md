@@ -247,3 +247,10 @@ Addresses frequently permute street, city, and state elements, while injecting s
 - **Observation:** `AF-0684, Uttar Pradesh, GHAZIABAD, 9487203`
 
 *Impact:* Rigid sequence matching fails, but token-set Jaccard and numeric extraction preserve the match signal.
+
+### 4. Legal Entity Suffix Variation & Drift
+Business records frequently drift between abbreviated, full, and alternate legal forms:
+- `Acme Corporation` $\leftrightarrow$ `Acme Corp` $\leftrightarrow$ `Acme Inc` $\leftrightarrow$ `Acme LLC`
+- `Red Ventures Private Limited` $\leftrightarrow$ `Red Ventures Pvt Ltd` $\leftrightarrow$ `Red Ventures`
+- `Dupont & Fils SASU` $\leftrightarrow$ `Dupont & Fils SARL` $\leftrightarrow$ `Dupont & Fils`
+- Inverted structures: `LLC UROLOGY ROCKY ASSOCIATES` vs `Urology Rocky Associates LLC`.
