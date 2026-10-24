@@ -406,3 +406,11 @@ For each candidate pair $(e^{(1)}, e^{(	ext{cand})})$, we extract 15 similarity 
 8. `char_prefix_match_ratio`: Ratio of shared common prefix length to maximum string length.
 9. `name_len_diff`: Absolute difference in character lengths: $|L_1 - L_2|$.
 10. `name_len_ratio`: Ratio of shorter to longer name: $\min(L_1, L_2) / \max(L_1, L_2)$.
+
+### Address Alignment & Numeric Matching Features
+
+11. `addr_token_jaccard`: Jaccard similarity on address word tokens (0.0 if missing).
+12. `addr_token_overlap_count`: Count of shared address words.
+13. `addr_num_overlap_count`: Count of shared numeric tokens (house numbers, suite numbers, PIN codes).
+14. `addr_has_shared_num`: Binary flag indicating at least one identical numeric token in the address.
+15. `name_addr_interaction`: Product interaction feature: $	ext{token\_jaccard} 	imes 	ext{addr\_token\_jaccard}$.
