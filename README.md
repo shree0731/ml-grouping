@@ -331,3 +331,7 @@ By partitioning entities strictly by `country`, the search space immediately div
 
 ### 3. Compact Web-Clean and Handle-Stripped Block
 - **Block 3 (`norm_name_compact`):** Strips spaces, TLDs (`.com`, `.org`, `.in`), and handle prefixes (`@`). Links entities transformed into URLs or single-token brands (`Dent Coffee` $\leftrightarrow$ `@dentcoffee`).
+
+### 4. Informative Token Inverted Indexing
+- **Block 4 (Informative Tokens):** Extracts word tokens of length $\ge 3$ characters from the suffix-stripped name.
+- **Frequency Safety Cap:** Evaluates token document frequencies in target sources (S2/S3) and prunes any token appearing more than $250$ times. This prevents catastrophic Cartesian blowups on generic words ("solutions", "services", "care").
