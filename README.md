@@ -12,3 +12,46 @@ This repository documents the end-to-end architecture, exploratory data analysis
 - **Discovery of Critical Invariants:** Uncovered the **100.0000% intra-country match consistency** (zero cross-border linkages), enabling mathematically lossless hard-partitioning.
 - **Ultra-Fast In-Memory Pipeline:** Resolved memory bottlenecks by shifting from naive quadratic scans to an optimized in-memory pipeline executing training and calibration in **~14 seconds** under **< 500 MB RAM**.
 - **High-Precision Calibration:** Achieved a **0.9964 Macro $F_{0.5}$** on validation entities with calibrated precision thresholding ($	au = 0.75$), aggressively penalizing false merges while correctly handling singletons.
+
+## System Architecture Overview
+
+```mermaid
+flowchart TD
+    subgraph Ingestion ["1. Data Ingestion & Partitioning"]
+        S1["Source 1: Deduplicated Catalog<br>(2.2M Reference Records)"]
+        S2["Source 2: Query Stream A<br>(5.0M Noisy Records)"]
+        S3["Source 3: Query Stream B<br>(5.3M Noisy Records)"]
+        CP["Country Hard-Partitioning<br>(100% Lossless Isolation)"]
+        S1 --> CP
+        S2 --> CP
+        S3 --> CP
+    end
+
+    subgraph Preprocessing ["2. Unicode-Safe Normalization"]
+        NORM["Multilingual Normalizer<br>• NFKC Decomposition<br>• Accent & Indic Matra Preservation<br>• Legal Suffix Stripping<br>• Web & Handle Cleansing<br>• Address Canonicalization"]
+        CP --> NORM
+    end
+
+    subgraph Blocking ["3. Multi-Strategy Inverted Blocking"]
+        B1["Exact Normalized Name"]
+        B2["Suffix-Stripped Name"]
+        B3["Compact Alphanumeric"]
+        B4["Informative Tokens (freq ≤ 250)"]
+        B5["Selective Prefix (5 chars, freq ≤ 150)"]
+        NORM --> B1 & B2 & B3 & B4 & B5
+        B1 & B2 & B3 & B4 & B5 --> DEDUP["Union & Deduplication<br>(99.9979% Reduction Ratio)"]
+    end
+
+    subgraph Matching ["4. Pairwise Feature Extraction & GBDT"]
+        FE["15 Pairwise Features<br>• Name Token Jaccard & Containment<br>• Character 3-Gram Overlap<br>• Address Token Overlap<br>• House Number & PIN Match<br>• Interaction Signals"]
+        XGB["XGBoost Classifier<br>(150 Trees, 8 Threads)"]
+        DEDUP --> FE --> XGB
+    end
+
+    subgraph Decision ["5. Precision Calibration & Output"]
+        THRESH["F0.5 Threshold Tuning<br>(Optimal τ = 0.75)"]
+        OUT1["matching_results.tsv<br>(Final Entity Matches)"]
+        OUT2["candidate_pairs.tsv<br>(Blocking Candidate Set)"]
+        XGB --> THRESH --> OUT1 & OUT2
+    end
+```
