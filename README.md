@@ -135,3 +135,15 @@ To analyze the 26.4 million tabular records without memory exhaustion, we levera
   - Source 3: 3.33% missing in train (175,916 rows), 2.68% in test (136,098 rows).
 
 *Implication:* Matching models cannot rely solely on address features; models must maintain robust matching capabilities when address tokens are completely absent.
+
+### Geographic Distributions
+
+The training data spans two major regional markets, while the test set introduces an open-set domain expansion:
+
+| Split | Country | Source 1 Count (%) | Source 2 Count (%) | Source 3 Count (%) |
+| :--- | :--- | :---: | :---: | :---: |
+| **Train** | United States (`US`) | 1,323,633 (59.98%) | 3,016,817 (59.92%) | 3,170,056 (59.98%) |
+| **Train** | India (`India`) | 883,188 (40.02%) | 2,017,799 (40.08%) | 2,115,547 (40.02%) |
+| **Test** | India (`India`) | 809,986 (46.75%) | 2,312,565 (47.32%) | 2,405,000 (47.32%) |
+| **Test** | United States (`US`) | 663,106 (38.27%) | 1,871,330 (38.29%) | 1,945,701 (38.28%) |
+| **Test** | France (`France`) | 259,452 (14.98%) | 703,378 (14.39%) | 731,615 (14.40%) |
