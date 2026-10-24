@@ -318,3 +318,9 @@ All-pairs cross-source comparison across 12.5M training records requires:
 $$N_{	ext{pairs}} = N_1 	imes (N_2 + N_3) = 2,206,821 	imes (5,034,616 + 5,285,603) pprox \mathbf{22.77 	ext{ trillion pairs}}$$
 
 To make candidate generation tractable, we implemented a **multi-strategy inverted blocking engine** (`MultiIndexBlocker`) that constructs multiple complementary hash indexes per country partition.
+
+### 1. Country Hard-Partitioning
+By partitioning entities strictly by `country`, the search space immediately divides into disjoint geographic sub-problems:
+- US: $1.32	ext{M} 	imes (3.02	ext{M} + 3.17	ext{M}) pprox 8.19	ext{ trillion pairs}$
+- India: $0.88	ext{M} 	imes (2.02	ext{M} + 2.12	ext{M}) pprox 3.65	ext{ trillion pairs}$
+- Total Country-Blocked Space: **$11.84	ext{ trillion pairs}$** (50% reduction instantly with 100% recall).
