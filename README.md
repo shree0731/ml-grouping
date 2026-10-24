@@ -147,3 +147,14 @@ The training data spans two major regional markets, while the test set introduce
 | **Test** | India (`India`) | 809,986 (46.75%) | 2,312,565 (47.32%) | 2,405,000 (47.32%) |
 | **Test** | United States (`US`) | 663,106 (38.27%) | 1,871,330 (38.29%) | 1,945,701 (38.28%) |
 | **Test** | France (`France`) | 259,452 (14.98%) | 703,378 (14.39%) | 731,615 (14.40%) |
+
+### The 100% Intra-Country Invariant
+
+During our Phase 1 exploratory data analysis, we verified the country linkage consistency across all **7,638,365 true matched pairs** in `train_ground_truth.tsv`:
+
+- **Same-country matches:** $7,638,365$ ($100.0000\%$)
+- **Cross-country matches:** $0$ ($0.0000\%$)
+
+$$orall (e^{(1)}, e^{(	ext{cand})}) \in \mathcal{T}, \quad 	ext{country}(e^{(1)}) \equiv 	ext{country}(e^{(	ext{cand})})$$
+
+> **Architectural Invariant:** Hard-blocking strictly on `country == country` is **100% lossless** with zero recall sacrifice, while reducing cross-country Cartesian pairs by over **50%** before any string operations.
