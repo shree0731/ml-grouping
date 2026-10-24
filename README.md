@@ -114,3 +114,12 @@ To analyze the 26.4 million tabular records without memory exhaustion, we levera
 | **Test** | `test_source2.tsv` | Test Query Stream A | 485.9 MB | 4,887,273 | 4,887,273 | 0 |
 | **Test** | `test_source3.tsv` | Test Query Stream B | 482.6 MB | 5,082,316 | 5,082,316 | 0 |
 | **Total** | **All 7 TSV Tables** | **Complete Dataset** | **~2.40 GB** | **26,436,000** | **26,436,000** | **0** |
+
+### Data Integrity Guarantees
+
+- **Primary Key Uniqueness:** Every source file exhibits 0 duplicate entity IDs. Entity IDs are strictly prefixed:
+  - Source 1: `S1-`
+  - Source 2: `S2-`
+  - Source 3: `S3-`
+- **Split Isolation:** Strict zero-overlap verified between train and test entity IDs:
+  $$\mathcal{S}_1^{	ext{train}} \cap \mathcal{S}_1^{	ext{test}} = \emptyset, \quad \mathcal{S}_2^{	ext{train}} \cap \mathcal{S}_2^{	ext{test}} = \emptyset, \quad \mathcal{S}_3^{	ext{train}} \cap \mathcal{S}_3^{	ext{test}} = \emptyset$$
