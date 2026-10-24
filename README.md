@@ -376,3 +376,11 @@ Over 99.9978% of all potential pairs are eliminated before ML scoring.
 | **Combined Candidates per S1** | **0** | **47.0** | **112.99** | **1,774** | **321.0** | **426.0** | **615.0** |
 
 95% of all reference entities receive $\le 426$ candidates total across both sources.
+
+### Failure Mode Diagnosis for Missed Candidates
+
+A detailed empirical audit of missed matches identified four primary root causes:
+1. **Indic Cross-Script Transliteration (~48% of misses):** Latin S1 vs Devanagari/Tamil S2/S3 (zero codepoint overlap despite identical street addresses).
+2. **Leet-Speak & Initial Digit Corruptions (~22% of misses):** Leading character substitutions (`8` for `B`, `0` for `O`, `l` for `I`).
+3. **Generic Term Frequency Caps (~18% of misses):** Entities consisting solely of frequent terms pruned by the safety threshold.
+4. **Inverted Suffix Structures (~12% of misses):** Leading legal suffixes (`LLC UROLOGY ...`).
