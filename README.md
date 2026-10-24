@@ -72,3 +72,17 @@ The data topology presents several specific structural properties:
 2. **One-to-Many Match Multiplicity:** A single Source 1 reference entity may match zero, one, or multiple records across Source 2 and Source 3 (e.g. branch representations, legal registration variations, alternate operating names).
 3. **Presence of Singletons:** Many entities in Source 1 have zero matching records in Source 2 or Source 3. Correctly identifying singletons without generating false links is crucial under the competition scoring rules.
 4. **Presence of Distractor Records:** Substantial portions of Source 2 and Source 3 denote businesses that do not exist in Source 1 (distractor noise).
+
+## Evaluation Metric: Macro-Averaged $F_{0.5}$
+
+Submissions are evaluated using the **Macro-Averaged $F_{0.5}$ Score**, defined across all $N_1$ entities in the evaluation set:
+
+$$	ext{Macro } F_{0.5} = rac{1}{N_1} \sum_{i=1}^{N_1} F_{0.5}(e_i^{(1)})$$
+
+where for each reference entity $e_i^{(1)}$:
+$$F_{0.5}(e_i^{(1)}) = rac{1.25 	imes 	ext{Precision}(e_i^{(1)}) 	imes 	ext{Recall}(e_i^{(1)})}{0.25 	imes 	ext{Precision}(e_i^{(1)}) + 	ext{Recall}(e_i^{(1)})}$$
+
+with:
+$$	ext{Precision}(e_i^{(1)}) = rac{|\mathcal{T}_i \cap \mathcal{P}_i|}{|\mathcal{P}_i|}, \quad 	ext{Recall}(e_i^{(1)}) = rac{|\mathcal{T}_i \cap \mathcal{P}_i|}{|\mathcal{T}_i|}$$
+
+where $\mathcal{T}_i$ is the ground-truth set of matching IDs, and $\mathcal{P}_i$ is the predicted set of matching IDs.
