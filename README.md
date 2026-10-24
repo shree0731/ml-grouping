@@ -281,3 +281,12 @@ Rather than destructive ASCII transliteration (which destroys accents and native
 - **Retained:** Letters ($L^*$), Numbers ($N^*$), and Combining Marks ($M^*$)—preserving Devanagari matras, Tamil viramas, and French diacritics.
 - **Transformed:** Punctuation ($P^*$), Symbols ($S^*$), and Controls ($C^*$) replaced by spaces.
 - **Ampersands:** Replaced with `' and '` to unify stylistic variants (`&` vs `and`).
+
+### Legal Suffix Canonicalization & Stripping
+
+We constructed a whitespace-bounded multilingual regex supporting English, French, and Indic legal suffixes:
+- English: `private limited`, `pvt ltd`, `limited liability company`, `llc`, `llp`, `incorporated`, `corporation`, `company`, `limited`, `ltd`, `inc`, `corp`
+- French: `sarl`, `sasu`, `sas`, `eurl`, `sa`, `snc`
+- Indic: `प्राइवेट लिमिटेड`, `लिमिटेड`, `எல்எல்பி`, `ప్రైవేట్ లిమిటెడ్`, `லிమిటెడ్`
+
+Using `(?:^|\s+)` boundaries ensures seamless matching across non-ASCII scripts where regex `` fails on combining characters.
