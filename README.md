@@ -238,3 +238,12 @@ Digit-for-letter and visually ambiguous substitutions frequently corrupt initial
 - `Olanelle Pinnacle` $\leftrightarrow$ `0LANELLE PINNACLE` (`O` $ightarrow$ `0`)
 - `Ironclad LLC` $\leftrightarrow$ `lRONCLAD LLC` (Capital `I` $ightarrow$ lowercase `l`)
 - `Medina and Thompson LLC` $\leftrightarrow$ `Medina and Tmthonm LLC` (Internal letter scrambling)
+
+### 3. Address Component Re-ordering & Artifact Injection
+Addresses frequently permute street, city, and state elements, while injecting synthetic placeholder strings:
+- **Reference:** `630 45th Terrace, Kansas City, MO`
+- **Observation:** `45ND TERRACE, null, KANSAS CITY, MO`
+- **Reference:** `Af-684, Nandgram Near Mother India Public School, Ghaziabad, UP`
+- **Observation:** `AF-0684, Uttar Pradesh, GHAZIABAD, 9487203`
+
+*Impact:* Rigid sequence matching fails, but token-set Jaccard and numeric extraction preserve the match signal.
