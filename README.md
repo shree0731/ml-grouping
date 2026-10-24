@@ -274,3 +274,10 @@ To handle 26.4 million rows under strict memory bounds (< 4 GB RAM) and fast ite
 ## Phase 1: Preprocessing & Normalization Architecture
 
 The preprocessing engine (`normalizer.py`) creates standardized representations while strictly preserving 100% of the raw tabular text for downstream feature extraction.
+
+### Unicode-Aware Character Filtering
+
+Rather than destructive ASCII transliteration (which destroys accents and native scripts), the normalizer uses Unicode `NFKC` normalization combined with a precomputed 64K-character category translation table:
+- **Retained:** Letters ($L^*$), Numbers ($N^*$), and Combining Marks ($M^*$)—preserving Devanagari matras, Tamil viramas, and French diacritics.
+- **Transformed:** Punctuation ($P^*$), Symbols ($S^*$), and Controls ($C^*$) replaced by spaces.
+- **Ampersands:** Replaced with `' and '` to unify stylistic variants (`&` vs `and`).
