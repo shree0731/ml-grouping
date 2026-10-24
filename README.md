@@ -418,3 +418,10 @@ For each candidate pair $(e^{(1)}, e^{(	ext{cand})})$, we extract 15 similarity 
 ## Phase 4: Machine Learning Classifier & Training Strategy
 
 To score candidate pairs, we employ a Gradient Boosted Decision Tree (GBDT) using **XGBoost**.
+
+### In-Memory Training Dataset Construction
+
+To eliminate disk thrashing and achieve sub-minute training:
+- **True Positives (~69,567 pairs):** Extracted via DuckDB joins between sampled S1 entities and `train_ground_truth.tsv`.
+- **Hard Negatives (~67,430 pairs):** Extracted by joining S1 entities with S2/S3 records that share the same country and a common token but are verified non-matches.
+- **Dataset Size:** 136,997 balanced, high-discrimination candidate pairs processed in under **6.3 seconds**.
