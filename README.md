@@ -216,3 +216,7 @@ The proportion of singletons (entities with 0 matches across S2 and S3) proved r
 - **India:** $49,351$ singletons out of $883,188$ S1 entities (**$5.588\%$**)
 
 This structural invariant allows calibrated validation and baseline priors for test-set singleton estimation.
+
+## Noise Taxonomy in Real-World Business Data
+
+Systematic error auditing of the training data revealed five major noise categories that defeat naive exact-matching pipelines:
