@@ -179,3 +179,22 @@ The emergence of `France` in the test set (comprising ~15% of records) represent
 | `business_address` | `train_source3` | 2 | 240 | 48.32 | 42.0 | 7.42 |
 | `business_name` | `test_source1` | 3 | 92 | 23.84 | 24.0 | 3.52 |
 | `business_address` | `test_source1` | 11 | 268 | 57.21 | 50.0 | 8.59 |
+
+### Ground Truth Match Multiplicity
+
+Analyzing the distribution of matches per Source 1 reference entity in `train_ground_truth.tsv`:
+
+| Matches per S1 Entity | Count of S1 Entities | Percentage | Cumulative % | Category |
+| :---: | :---: | :---: | :---: | :--- |
+| **0** | **123,247** | **5.5848%** | **5.58%** | **Singletons (No matches)** |
+| 1 | 119,157 | 5.3995% | 10.98% | Single Match |
+| 2 | 375,212 | 17.0024% | 27.99% | Moderate Linkage |
+| **3** | **530,841** | **24.0546%** | **52.04%** | **Peak Frequency Mode** |
+| 4 | 484,115 | 21.9372% | 73.98% | High Linkage |
+| 5 | 321,957 | 14.5892% | 88.57% | High Linkage |
+| 6 | 164,868 | 7.4708% | 96.04% | High Linkage |
+| 7 to 11 | 87,424 | 3.9615% | 100.00% | Tail Multiplicity |
+
+- **Mean Matches per S1:** $3.4613$
+- **Median Matches per S1:** $3.0$
+- **Maximum Matches observed:** $11$
