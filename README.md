@@ -158,3 +158,11 @@ During our Phase 1 exploratory data analysis, we verified the country linkage co
 $$orall (e^{(1)}, e^{(	ext{cand})}) \in \mathcal{T}, \quad 	ext{country}(e^{(1)}) \equiv 	ext{country}(e^{(	ext{cand})})$$
 
 > **Architectural Invariant:** Hard-blocking strictly on `country == country` is **100% lossless** with zero recall sacrifice, while reducing cross-country Cartesian pairs by over **50%** before any string operations.
+
+### Handling Geographic Domain Shift (`France`)
+
+The emergence of `France` in the test set (comprising ~15% of records) represents an open-set domain expansion. Our pipeline avoids overfitting to US/India-specific rules by:
+1. Treating `country` as a dynamic string key without hardcoded conditional branches.
+2. Handling French legal suffixes (`SARL`, `SAS`, `SASU`, `EURL`, `& Fils`).
+3. Preserving Latin accented characters (`é`, `è`, `ê`, `à`, `ç`, `ô`, `ù`) via Unicode NFKC normalization.
+4. Expanding European address tokens (`Boulevard`, `Rue`, `Avenue`, `bis`).
