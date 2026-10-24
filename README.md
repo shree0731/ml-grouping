@@ -270,3 +270,7 @@ To handle 26.4 million rows under strict memory bounds (< 4 GB RAM) and fast ite
 3. **Pairwise Feature Engineering**
 4. **Machine Learning Matching Model (GBDT)**
 5. **Threshold Calibration & Submission Verification**
+
+## Phase 1: Preprocessing & Normalization Architecture
+
+The preprocessing engine (`normalizer.py`) creates standardized representations while strictly preserving 100% of the raw tabular text for downstream feature extraction.
