@@ -366,3 +366,13 @@ Over 99.9978% of all potential pairs are eliminated before ML scoring.
 | **Total True Matches** | 3,693,619 | 3,944,746 | **7,638,365** |
 | **Candidate Recall Ceiling** | **61.8477%** | **61.0611%** | **61.4415%** |
 | **S1 Entities with 0 Candidates** | 197,073 (8.93%) | 195,812 (8.87%) | **87,631 (3.97%)** |
+
+### Candidate Count Distribution per Source 1 Entity
+
+| Source Partition | Min | Median | Mean | Max | 90th %ile | 95th %ile | 99th %ile |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Source 2 Candidates per S1** | 0 | 20.0 | 55.91 | 838 | 162.0 | 217.0 | 310.0 |
+| **Source 3 Candidates per S1** | 0 | 27.0 | 57.08 | 1,006 | 163.0 | 216.0 | 312.0 |
+| **Combined Candidates per S1** | **0** | **47.0** | **112.99** | **1,774** | **321.0** | **426.0** | **615.0** |
+
+95% of all reference entities receive $\le 426$ candidates total across both sources.
