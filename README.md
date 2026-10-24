@@ -64,3 +64,11 @@ Let $\mathcal{S}_2 = \{e_1^{(2)}, \dots, e_{N_2}^{(2)}\}$ and $\mathcal{S}_3 = \
 Each record $e = (	ext{id}, 	ext{name}, 	ext{address}, 	ext{country})$ describes a business entity. There are no shared synthetic or natural primary keys across sources. The entity resolution objective is to learn a mapping:
 $$\mathcal{M}: \mathcal{S}_1 ightarrow \mathcal{P}(\mathcal{S}_2 \cup \mathcal{S}_3)$$
 that associates each reference entity $e_i^{(1)} \in \mathcal{S}_1$ with all matching records from $\mathcal{S}_2$ and $\mathcal{S}_3$ that denote the same physical real-world enterprise.
+
+### Entity Resolution Topology
+
+The data topology presents several specific structural properties:
+1. **Deduplicated Reference Source:** Source 1 is internally deduplicated; no two rows in Source 1 represent the same physical business.
+2. **One-to-Many Match Multiplicity:** A single Source 1 reference entity may match zero, one, or multiple records across Source 2 and Source 3 (e.g. branch representations, legal registration variations, alternate operating names).
+3. **Presence of Singletons:** Many entities in Source 1 have zero matching records in Source 2 or Source 3. Correctly identifying singletons without generating false links is crucial under the competition scoring rules.
+4. **Presence of Distractor Records:** Substantial portions of Source 2 and Source 3 denote businesses that do not exist in Source 1 (distractor noise).
