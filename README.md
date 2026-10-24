@@ -86,3 +86,14 @@ with:
 $$	ext{Precision}(e_i^{(1)}) = rac{|\mathcal{T}_i \cap \mathcal{P}_i|}{|\mathcal{P}_i|}, \quad 	ext{Recall}(e_i^{(1)}) = rac{|\mathcal{T}_i \cap \mathcal{P}_i|}{|\mathcal{T}_i|}$$
 
 where $\mathcal{T}_i$ is the ground-truth set of matching IDs, and $\mathcal{P}_i$ is the predicted set of matching IDs.
+
+### Mathematical Implications of $F_{0.5}$ Weighting
+
+1. **Precision Weighed 2× Over Recall:**
+   The parameter $eta = 0.5$ places double the weight on precision relative to recall. In business entity resolution, false merges (joining two distinct companies together) pollute business registries far more severely than missing a link (false negative).
+2. **Singleton Scoring Mechanics:**
+   - If an entity is a true singleton ($\mathcal{T}_i = \emptyset$):
+     - Predicting $\mathcal{P}_i = \emptyset$ yields a perfect score: $F_{0.5}(e_i^{(1)}) = 1.0$.
+     - Predicting even a single false match ($\mathcal{P}_i 
+e \emptyset$) drops the score immediately to: $F_{0.5}(e_i^{(1)}) = 0.0$.
+   - Consequently, precision calibration and aggressive thresholding directly protect the substantial singleton score contribution.
