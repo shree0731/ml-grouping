@@ -220,3 +220,14 @@ This structural invariant allows calibrated validation and baseline priors for t
 ## Noise Taxonomy in Real-World Business Data
 
 Systematic error auditing of the training data revealed five major noise categories that defeat naive exact-matching pipelines:
+
+### 1. Cross-Script Phonological Transliteration
+In the Indian partition, Source 1 business names are strictly rendered in the Latin alphabet, while substantial portions of Source 2 and Source 3 are phonetically transliterated into native Indic scripts:
+- **English Reference:** `Red Ventures Private Limited`
+- **Devanagari Observation:** `रेड वेंचर्स प्राइवेट लिमिटेड`
+- **English Reference:** `Raj Investments LLP`
+- **Tamil Observation:** `ராஜ் இன்வெஸ்ட்மெண்ட்ஸ் எல்எல்பி`
+- **English Reference:** `Big Real International Limited`
+- **Telugu Observation:** `బిగ్ రియల్ ఇంటర్నేషనల్ లిమిటెడ్`
+
+*Impact:* Character-level Jaccard or Levenshtein distance on raw text produces 0.0 similarity. However, their numeric street addresses and PIN codes remain tightly aligned.
