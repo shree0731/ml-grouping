@@ -414,3 +414,7 @@ For each candidate pair $(e^{(1)}, e^{(	ext{cand})})$, we extract 15 similarity 
 13. `addr_num_overlap_count`: Count of shared numeric tokens (house numbers, suite numbers, PIN codes).
 14. `addr_has_shared_num`: Binary flag indicating at least one identical numeric token in the address.
 15. `name_addr_interaction`: Product interaction feature: $	ext{token\_jaccard} 	imes 	ext{addr\_token\_jaccard}$.
+
+## Phase 4: Machine Learning Classifier & Training Strategy
+
+To score candidate pairs, we employ a Gradient Boosted Decision Tree (GBDT) using **XGBoost**.
