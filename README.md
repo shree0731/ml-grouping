@@ -300,3 +300,14 @@ Using `(?:^|\s+)` boundaries ensures seamless matching across non-ASCII scripts 
 ### Dynamic Country Handling
 
 Country labels are normalized via whitespace trimming and case stabilization without hardcoding allowed countries. This ensures seamless execution when encountering unseen regions (`France` in test).
+
+### Normalization Transformation Examples
+
+| Raw Business Name | Raw Address | `norm_name` | `norm_name_no_suffix` | `norm_name_compact` | `norm_address` |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `Payne Enterprises, LLC.` | `3315 Fremont St, Peoria, IL` | `payne enterprises llc` | `payne enterprises` | `payneenterprises` | `3315 fremont street peoria il` |
+| `PAYNE-ENRTPRMISES` | `3315 FREMONT SAINT, PEORIA, IL` | `payne enrtprmises` | `payne enrtprmises` | `payneenrtprmises` | `3315 fremont street peoria il` |
+| `payneenterprises.com` | `3315 Fremont Street, Peoria, IL` | `payneenterprises com` | `payneenterprises com` | `payneenterprises` | `3315 fremont street peoria il` |
+| `रेड वेंचर्स प्राइवेट लिमिटेड` | `G-1, BANIPARK, JAIPUR, Rajasthan` | `रेड वेंचर्स प्राइवेट लिमिटेड` | `रेड वेंचर्स` | `रेडवेंचर्स` | `g 1 banipark jaipur rajasthan` |
+| `ராஜ் இன்வெஸ்ட்மெண்ட்ஸ் எல்எல்பி` | `6(29), C.I.T. Colony, Chennai, TN` | `ராஜ் இன்வெஸ்ட்மெண்ட்ஸ் எல்எல்பி` | `ராஜ் இன்வெஸ்ட்மெண்ட்ஸ்` | `ராஜ்இன்வெஸ்ட்மெண்ட்ஸ்` | `6 29 c i t colony chennai tn` |
+| `Dupont & Fils SASU` | `175 Boulevard du Président Franklin Roosevelt` | `dupont and fils sasu` | `dupont and fils` | `dupontandfils` | `175 boulevard du président franklin roosevelt` |
