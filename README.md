@@ -296,3 +296,7 @@ Using `(?:^|\s+)` boundaries ensures seamless matching across non-ASCII scripts 
 1. **Abbreviation Expansion:** Standardizes common street abbreviations (`st` / `saint` $ightarrow$ `street`, `rd` $ightarrow$ `road`, `ave` $ightarrow$ `avenue`, `blvd` $ightarrow$ `boulevard`, `ste` $ightarrow$ `suite`, `apt` $ightarrow$ `apartment`).
 2. **Numeric Preservation:** Extracts house numbers, suite digits, and postal PIN codes as dedicated sets.
 3. **Artifact Stripping:** Purges synthetic placeholder tokens (`null`, `none`, `<null>`).
+
+### Dynamic Country Handling
+
+Country labels are normalized via whitespace trimming and case stabilization without hardcoding allowed countries. This ensures seamless execution when encountering unseen regions (`France` in test).
